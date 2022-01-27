@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Category } from "../models/Category";
 
 const categoryRouter = Router();
 
@@ -7,10 +8,13 @@ const categories = [];
 categoryRouter.post("/", (request, response) => {
   const { name, description } = request.body;
 
-  const category = {
+  const category = new Category();
+
+  Object.assign(category, {
     name,
     description,
-  };
+    created_at: new Date(),
+  });
 
   categories.push(category);
 
