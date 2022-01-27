@@ -8,6 +8,7 @@ interface ICreateCategoryDTO {
 class CategoriesRepository {
   private categories: Category[];
 
+  // eslint-disable-next-line no-use-before-define
   private static INSTANCE: CategoriesRepository;
 
   private constructor() {
@@ -37,6 +38,12 @@ class CategoriesRepository {
 
   listAll(): Category[] {
     return this.categories;
+  }
+
+  findByName(name: string): Category {
+    const category = this.categories.find((category) => category.name === name);
+
+    return category;
   }
 }
 
