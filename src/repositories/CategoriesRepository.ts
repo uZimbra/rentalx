@@ -8,8 +8,17 @@ interface ICreateCategoryDTO {
 class CategoriesRepository {
   private categories: Category[];
 
-  constructor() {
+  private static INSTANCE: CategoriesRepository;
+
+  private constructor() {
     this.categories = [];
+  }
+
+  public static getInstance(): CategoriesRepository {
+    if (!this.INSTANCE) {
+      this.INSTANCE = new CategoriesRepository();
+    }
+    return this.INSTANCE;
   }
 
   create({ name, description }: ICreateCategoryDTO) {
@@ -24,6 +33,10 @@ class CategoriesRepository {
     this.categories.push(category);
 
     return category;
+  }
+
+  listAll(): Category[] {
+    return this.categories;
   }
 }
 
