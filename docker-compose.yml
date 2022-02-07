@@ -11,6 +11,8 @@ services:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=ignite
       - POSTGRES_DB=rentx
+      - TZ=America/Bahia
+      - PGTZ=America/Bahia
     volumes:
       - pgdata:/data/postgres
     # network_mode: host
