@@ -12,15 +12,15 @@ const upload = multer({
 });
 
 categoryRouter.post("/", (request, response) => {
-  return createCategoryController.handle(request, response);
+  return createCategoryController().handle(request, response);
 });
 
 categoryRouter.get("/", (request, response) => {
-  return listCategoriesController.handle(request, response);
+  return listCategoriesController().handle(request, response);
 });
 
 categoryRouter.post("/import", upload.single("file"), (request, response) => {
-  return importCategoryController.handle(request, response);
+  return importCategoryController().handle(request, response);
 });
 
 export { categoryRouter };
